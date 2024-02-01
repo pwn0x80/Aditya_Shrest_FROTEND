@@ -1,5 +1,6 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { TaskDetails } from '../../pages/TaskDetails/TaskDetails'
 const ArrowIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" className="w-5 h-5 rotate-[240deg]">
     <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-11.25a.75.75 0 0 0-1.5 0v4.59L7.3 9.24a.75.75 0 0 0-1.1 1.02l3.25 3.5a.75.75 0 0 0 1.1 0l3.25-3.5a.75.75 0 1 0-1.1-1.02l-1.95 2.1V6.75Z" clipRule="evenodd" />
@@ -11,27 +12,37 @@ const StartIcon = () => (
   </svg>
 )
 
-export const Card = (props: {}) => {
+export const Card = (props: { taskDetails: any }) => {
+  const [dateState, setDate] = useState("")
+  useEffect(() => {
+    let dateString = props?.taskDetails?.due_date
+    const dateObject = new Date(dateString);
+    const now = new Date();
+    const options = { hour: 'numeric', day: 'numeric', weekday: 'short', month: 'short', year: '2-digit', } as Intl.DateTimeFormatOptions;
+    let formattedDate = dateObject.toLocaleString('en-US', options);
+    if (dateObject.toDateString() === now.toDateString()) {
+      formattedDate = 'Today';
+    }
+    setDate(formattedDate)
+  }, [])
   return (
     <div className='hover:scale-105
-      flex justify-between flex-col bg-orange-200 px-3 py-2 drop-shadow-md rounded-md w-[15rem] h-[10em]'>
+      flex justify-between flex-col bg-orange-200 px-3 py-2 drop-shadow-md rounded-md w-[inherit] h-[10rem]'>
       <div>
         <div className='flex items-center justify-between pb-3'>
           <div className='text-xs flex gap-x-1 items-center'>
             <StartIcon />
-            <span className=' font-bold'> Today</span>
+            <span className=' font-bold'> {dateState}</span>
           </div>
           <ArrowIcon />
         </div>
 
-        <div className='font-light text-sm line-clamp-1' >Title </div>
+        <div className='font-light text-sm line-clamp-1' >{props.taskDetails?.title} </div>
         <span className='text-md line-clamp-3 tracking-wide'>
-          React Todo Application...
-          React Todo Application...
-          React Todo Application...
+          {props?.taskDetails?.description}
         </span>
       </div>
-      <div className='text-xs text-right italic'>completed else.. </div>
+      <div className='text-xs text-right italic'>{props?.taskDetails?.completed ? "completed" : "pending"} </div>
     </div>
   )
 }

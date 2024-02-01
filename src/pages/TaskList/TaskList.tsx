@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from '../../components/Card/Card'
+import { TaskFilter } from '../../components/TaskFilter/TaskFilter'
 export const TaskList = (props: {}) => {
   return (
     <div>
@@ -13,42 +14,15 @@ export const TaskList = (props: {}) => {
         </div>
         <div className='bg-[#f9f9ff] rounded-md p-4 '>
           <div className='flex gap-4 flex-wrap '>
-            {[1, 2, 3, 4].map(() => (
-              <div className='no-scrollbar drop-shadow-2xl  p-2 rounded-md h-[90vh] overflow-auto'>
-                <div className='drop-shadow-md text-sm capitalize font-bold sticky z-10 top-0 bg-white rounded-md py-1 px-1'>
-                  <span> Todo</span>
-                </div>
-                <div className='py-3'>
-                  <Card />
-                </div>
-                <div className='py-3'>
-                  <Card />
-                </div>
-                <div className='py-3'>
-                  <Card />
-                </div>
-                <div className='py-3'>
-                  <Card />
-                </div>
-
-                <div className='py-3'>
-                  <Card />
-                </div>
-
-                <div className='py-3'>
-                  <Card />
-                </div>
-
-                <div className='py-3'>
-                  <Card />
-                </div>
-
-              </div>
-
-            ))}
+            <TaskFilter taskType='Todo' />
+            <TaskFilter taskType='inProgress'/>
+            <TaskFilter taskType='Completed'/>
+            <TaskFilter taskType='OverDue'/>
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+

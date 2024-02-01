@@ -91,7 +91,7 @@ export const AddTask = (props: {}) => {
               {...register("due_date", {
                 required: { value: true, message: 'required Description' }
               })}
-              type='datetime-local' min={new Date().toISOString().slice(0, 16)} className='w-full md:w-auto p-2 border-b-2 border-gray-300 focus:outline-none focus:border-green-500' />
+              type='datetime-local'  className='w-full md:w-auto p-2 border-b-2 border-gray-300 focus:outline-none focus:border-green-500' />
             {errors.due_date && <div className='italic text-xs text-red-500'>{errors.due_date.message as string}</div>}
           </div>
           <div>
