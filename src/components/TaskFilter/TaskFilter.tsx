@@ -26,7 +26,7 @@ export const TaskFilter = (props: { taskType: string }) => {
       <div className='py-3 grid gap-2'>
         {
           data?.map((taskDetails:any) => (
-            <Card taskDetails={taskDetails} />
+            <Card taskDetails={taskDetails} taskType={props.taskType} />
           ))
         }
 

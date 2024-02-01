@@ -1,4 +1,5 @@
 
+import { type } from 'os'
 import React, { useEffect, useState } from 'react'
 import { TaskDetails } from '../../pages/TaskDetails/TaskDetails'
 const ArrowIcon = () => (
@@ -12,7 +13,7 @@ const StartIcon = () => (
   </svg>
 )
 
-export const Card = (props: { taskDetails: any }) => {
+export const Card = (props: { taskDetails: any, taskType:String }) => {
   const [dateState, setDate] = useState("")
   useEffect(() => {
     let dateString = props?.taskDetails?.due_date
@@ -26,12 +27,15 @@ export const Card = (props: { taskDetails: any }) => {
     setDate(formattedDate)
   }, [])
   return (
-    <div className='hover:scale-105
-      flex justify-between flex-col bg-orange-200 px-3 py-2 drop-shadow-md rounded-md w-[inherit] h-[10rem]'>
+    <div className={`hover:scale-105
+      flex justify-between flex-col 
+      ${props.taskDetails.completed?"bg-gray-200": dateState.includes('Today')?"bg-orange-200":props.taskType.includes("OverDue")? 'bg-red-200': "bg-green-200" }
+
+      px-3 py-2 drop-shadow-md rounded-md w-[inherit] h-[10rem]`}>
       <div>
         <div className='flex items-center justify-between pb-3'>
           <div className='text-xs flex gap-x-1 items-center'>
-            <StartIcon />
+            {dateState.includes("Today") && <StartIcon />}
             <span className=' font-bold'> {dateState}</span>
           </div>
           <ArrowIcon />
