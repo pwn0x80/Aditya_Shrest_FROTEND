@@ -24,7 +24,7 @@ export const TaskFilter = (props: { taskType: string }) => {
     </div>
     )
   }
-  if(error){
+  if(error ){
     return (
     <div>
         Somthing went Wrong try Again Later
@@ -38,11 +38,12 @@ export const TaskFilter = (props: { taskType: string }) => {
       </div>
       {isLoading&& "loading"}
       <div className='py-3 grid gap-2'>
-        { data &&
+        { !data?.status?.includes("error") &&
           data?.map((taskDetails:any) => (
             <Card taskDetails={taskDetails} taskType={props.taskType} />
           ))
         }
+        {data?.status?.includes("error")&& "Something Went Wrong"}
       </div>
     </div>
 
