@@ -1,3 +1,12 @@
+# Preview
+
+![home](https://github.com/pwn0x80/Aditya_Shrest_FROTEND/assets/25504458/8c88aa22-0502-46e1-8101-948982e06ace)
+![homeMob](https://github.com/pwn0x80/Aditya_Shrest_FROTEND/assets/25504458/d30dbaf0-b165-4fae-895a-170ab1f6808a)
+![AddTodo](https://github.com/pwn0x80/Aditya_Shrest_FROTEND/assets/25504458/52553822-bbf5-48cc-8e1e-7488614ed5dc)
+![preview](https://github.com/pwn0x80/Aditya_Shrest_FROTEND/assets/25504458/36a615e3-af0d-4728-92c9-028701ae3d29)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
